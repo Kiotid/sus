@@ -51,6 +51,9 @@ local TextLabel_8 = Instance.new("TextLabel")
 local RincoilBtn = Instance.new("TextButton")
 local PaintballBtn = Instance.new("TextButton")
 local Rincoil = Instance.new("Frame")
+local BigPaintballTxt = Instance.new("TextLabel")
+local RincoilTxt = Instance.new("TextLabel")
+local HiderTxt = Instance.new("TextLabel")
 
 rconsoleprint('@@GREEN@@')
 rconsoleprint("Kio's GUI Loaded!")
@@ -432,7 +435,7 @@ NoAfk.TextColor3 = Color3.fromRGB(255, 255, 255)
 NoAfk.TextSize = 14.000
 NoAfk.MouseButton1Down:connect(function()
 	AntiAfkTxt.Visible = true
-	
+
 	local vu = game:GetService("VirtualUser")
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
 		vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
@@ -453,7 +456,7 @@ NoClip.Text = "No Clip (Walk)"
 NoClip.TextColor3 = Color3.fromRGB(255, 255, 255)
 NoClip.TextSize = 14.000
 NoClip.MouseButton1Down:connect(function()
-	
+
 	NoClipTxt.Visible = true
 
 	local noclip = false 
@@ -512,7 +515,8 @@ Hack.Text = "Hack by Kio"
 Hack.TextColor3 = Color3.fromRGB(255, 255, 255)
 Hack.TextSize = 14.000
 Hack.MouseButton1Down:connect(function()
-	
+	RincoilTxt.Visible = true
+
 	local mouse = game:GetService("Players").LocalPlayer:GetMouse()
 
 	mouse.KeyDown:connect(function(key)
@@ -564,6 +568,8 @@ Hack_2.Text = "Hack by Kio"
 Hack_2.TextColor3 = Color3.fromRGB(255, 255, 255)
 Hack_2.TextSize = 14.000
 Hack_2.MouseButton1Down:connect(function()
+	BigPaintballTxt.Visible = true
+
 	local mouse = game:GetService("Players").LocalPlayer:GetMouse()
 
 	mouse.KeyDown:connect(function(key)
@@ -610,9 +616,10 @@ AutoFarm.Text = "Auto Farming"
 AutoFarm.TextColor3 = Color3.fromRGB(255, 255, 255)
 AutoFarm.TextSize = 14.000
 AutoFarm.MouseButton1Down:connect(function()
+	AutoFPet.Visible = true
+
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/inceldom/scrip/main/petsimsex",true))()
 
-	AutoFPet.Visible = true
 
 end)
 
@@ -629,6 +636,7 @@ Hider.Text = "Hider"
 Hider.TextColor3 = Color3.fromRGB(255, 255, 255)
 Hider.TextSize = 14.000
 Hider.MouseButton1Down:connect(function()
+	HiderTxt.Visible = true
 	local mouse = game:GetService("Players").LocalPlayer:GetMouse()
 
 	mouse.KeyDown:connect(function(key)
@@ -646,7 +654,7 @@ Hider.MouseButton1Down:connect(function()
 
 				end
 			end
-			
+
 
 			local BuildPart    = Instance.new("Part",game.Workspace.__MAP) --Directory of The Part
 			BuildPart.Size     = Vector3.new(10000,1,10000)                --The Size of the Part
@@ -698,9 +706,10 @@ AutoFarm_2.Text = "Auto Tp Zombie"
 AutoFarm_2.TextColor3 = Color3.fromRGB(255, 255, 255)
 AutoFarm_2.TextSize = 14.000
 AutoFarm_2.MouseButton1Down:connect(function()
+	AutoFZombie.Visible = true
+
 	loadstring(game:HttpGet("https://pastebin.com/J0tPCrA9",true))()	
 
-	AutoFZombie.Visible = true
 
 end)
 
@@ -758,22 +767,10 @@ TextLabel_6.BackgroundTransparency = 1.000
 TextLabel_6.Position = UDim2.new(0.0657640249, 0, 0.131672591, 0)
 TextLabel_6.Size = UDim2.new(0, 449, 0, 218)
 TextLabel_6.Font = Enum.Font.SourceSans
-TextLabel_6.Text = "The script updates itself every time!\n\n              to join on my Discord\n\nCredits: Designed, Developed by Kio"
+TextLabel_6.Text = "The script updates itself every time!\n\nUse https://discord.gg/NPv6ZpG\nto join on my Discord\n\nCredits: Designed, Developed by Kio"
 TextLabel_6.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_6.TextSize = 35.000
 
-TextButton.Parent = info
-TextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextButton.BackgroundTransparency = 1.000
-TextButton.Position = UDim2.new(0.0657640249, 0, 0.444839865, 0)
-TextButton.Size = UDim2.new(0, 143, 0, 41)
-TextButton.Font = Enum.Font.SourceSans
-TextButton.Text = "Click here"
-TextButton.TextColor3 = Color3.fromRGB(255, 78, 78)
-TextButton.TextSize = 35.000
-TextButton.MouseButton1Down:connect(function()
-	os.execute("start https://discord.gg/NPv6ZpG")
-end)
 
 BackBtn.Name = "BackBtn"
 BackBtn.Parent = info
@@ -876,6 +873,41 @@ JumpTxt.Text = "Jump: 0"
 JumpTxt.TextColor3 = Color3.fromRGB(4, 255, 0)
 JumpTxt.TextSize = 22.000
 
+BigPaintballTxt.Name = "BigPaintballTxt"
+BigPaintballTxt.Parent = CheatAttivi
+BigPaintballTxt.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+BigPaintballTxt.BackgroundTransparency = 0.650
+BigPaintballTxt.Position = UDim2.new(0, 0, 0.0527607426, 0)
+BigPaintballTxt.Size = UDim2.new(0, 256, 0, 43)
+BigPaintballTxt.Visible = false
+BigPaintballTxt.Font = Enum.Font.SourceSans
+BigPaintballTxt.Text = "BigPtn Cheat (L to active)"
+BigPaintballTxt.TextColor3 = Color3.fromRGB(4, 255, 0)
+BigPaintballTxt.TextSize = 22.000
+
+RincoilTxt.Name = "RincoilTxt"
+RincoilTxt.Parent = CheatAttivi
+RincoilTxt.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+RincoilTxt.BackgroundTransparency = 0.650
+RincoilTxt.Position = UDim2.new(0, 0, 0.0527607426, 0)
+RincoilTxt.Size = UDim2.new(0, 256, 0, 43)
+RincoilTxt.Visible = false
+RincoilTxt.Font = Enum.Font.SourceSans
+RincoilTxt.Text = "Rincoil Cheat (L to active)"
+RincoilTxt.TextColor3 = Color3.fromRGB(4, 255, 0)
+RincoilTxt.TextSize = 22.000
+
+HiderTxt.Name = "HiderTxt"
+HiderTxt.Parent = CheatAttivi
+HiderTxt.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+HiderTxt.BackgroundTransparency = 0.650
+HiderTxt.Position = UDim2.new(0, 0, 0.0527607426, 0)
+HiderTxt.Size = UDim2.new(0, 256, 0, 43)
+HiderTxt.Visible = false
+HiderTxt.Font = Enum.Font.SourceSans
+HiderTxt.Text = "PetSimX Hider (L to active)"
+HiderTxt.TextColor3 = Color3.fromRGB(4, 255, 0)
+HiderTxt.TextSize = 22.000
 
 while wait(0.1)do
 	TextLabel.TextColor3 = Color3.fromHSV(zigzag(counter),1,1)
