@@ -291,7 +291,7 @@ okJump.MouseButton1Down:connect(function()
 	game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = jump
 
 	JumpTxt.Visible = true
-	JumpTxt.Text = "Jump: " + game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower
+	JumpTxt.Text = "Jump: " .. game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower
 end)
 
 Jump.Name = "Jump"
@@ -324,7 +324,7 @@ okSpeed.MouseButton1Down:connect(function()
 	game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = speed
 
 	SpeedTxt.Visible = true
-	SpeedTxt.Text = "Speed: " + game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed
+	SpeedTxt.Text = "Speed: " .. game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed
 end)
 
 Speed.Name = "Speed"
@@ -875,7 +875,6 @@ JumpTxt.Font = Enum.Font.SourceSans
 JumpTxt.Text = "Jump: 0"
 JumpTxt.TextColor3 = Color3.fromRGB(4, 255, 0)
 JumpTxt.TextSize = 22.000
-
 
 
 while wait(0.1)do
