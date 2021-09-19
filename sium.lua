@@ -1,7 +1,4 @@
--- Gui to Lua
--- Version: 3.2
-
--- Instances:
+-- Gui Kio V:12.0.3
 
 local ScreenGui = Instance.new("ScreenGui")
 local Border = Instance.new("Frame")
@@ -15,6 +12,7 @@ local NoClip = Instance.new("TextButton")
 local TextLabel_2 = Instance.new("TextLabel")
 local PetSimulator = Instance.new("Frame")
 local AutoFarm = Instance.new("TextButton")
+local Hider = Instance.new("TextButton")
 local TextLabel_3 = Instance.new("TextLabel")
 local TextLabel_4 = Instance.new("TextLabel")
 local okJump = Instance.new("TextButton")
@@ -53,7 +51,7 @@ local TextLabel_8 = Instance.new("TextLabel")
 local RincoilBtn = Instance.new("TextButton")
 local PaintballBtn = Instance.new("TextButton")
 local Rincoil = Instance.new("Frame")
---Properties:
+
 rconsoleprint('@@GREEN@@')
 rconsoleprint("Kio's GUI Loaded!")
 local string = [[
@@ -164,6 +162,7 @@ CheatAttivi.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 CheatAttivi.BackgroundTransparency = 1.000
 CheatAttivi.Position = UDim2.new(0.809381962, 0, 0, 0)
 CheatAttivi.Size = UDim2.new(0, 256, 0, 815)
+CheatAttivi.Visible = true
 
 UIListLayout.Parent = CheatAttivi
 UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
@@ -432,13 +431,14 @@ NoAfk.Text = "Anti AFK"
 NoAfk.TextColor3 = Color3.fromRGB(255, 255, 255)
 NoAfk.TextSize = 14.000
 NoAfk.MouseButton1Down:connect(function()
+	AntiAfkTxt.Visible = true
+	
 	local vu = game:GetService("VirtualUser")
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
 		vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 		wait(1)
 		vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 	end)
-	AntiAfkTxt.Visible = true
 end)
 
 NoClip.Name = "NoClip"
@@ -453,6 +453,9 @@ NoClip.Text = "No Clip (Walk)"
 NoClip.TextColor3 = Color3.fromRGB(255, 255, 255)
 NoClip.TextSize = 14.000
 NoClip.MouseButton1Down:connect(function()
+	
+	NoClipTxt.Visible = true
+
 	local noclip = false 
 	game:GetService('RunService').Stepped:connect(function() 
 		if noclip then 
@@ -468,7 +471,6 @@ NoClip.MouseButton1Down:connect(function()
 		end 
 	end) 
 
-	NoClipTxt.Visible = true
 
 end)
 
@@ -614,6 +616,47 @@ AutoFarm.MouseButton1Down:connect(function()
 
 end)
 
+
+Hider.Name = "Hider"
+Hider.Parent = PetSimulator
+Hider.BackgroundColor3 = Color3.fromRGB(24, 24, 24)
+Hider.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Hider.BorderSizePixel = 2
+Hider.Position = UDim2.new(0.388999999, 0, 0.216000006, 0)
+Hider.Size = UDim2.new(0, 94, 0, 32)
+Hider.Font = Enum.Font.SourceSans
+Hider.Text = "Hider"
+Hider.TextColor3 = Color3.fromRGB(255, 255, 255)
+Hider.TextSize = 14.000
+Hider.MouseButton1Down:connect(function()
+	local mouse = game:GetService("Players").LocalPlayer:GetMouse()
+
+	mouse.KeyDown:connect(function(key)
+		if key == "l" then
+
+			local player = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+
+			for i, v in pairs(workspace.__MAP:GetChildren()) do
+				if v.Name == "Eggs" or v.Name == "Interactive" or v.Name == "PlayerSpawns" or v.Name == "Teleports" then
+					print("sas")
+				else
+					for i, vi in pairs(v:GetChildren()) do
+						vi:Destroy()
+					end
+
+				end
+			end
+			
+
+			local BuildPart    = Instance.new("Part",game.Workspace.__MAP) --Directory of The Part
+			BuildPart.Size     = Vector3.new(10000,1,10000)                --The Size of the Part
+			BuildPart.Position = Vector3.new(player.Position.x,player.Position.y - 15,player.Position.z)  --The Position of The Part
+			BuildPart.Anchored = true  
+		end
+	end)
+end)
+
+
 TextLabel_3.Parent = PetSimulator
 TextLabel_3.BackgroundColor3 = Color3.fromRGB(24, 24, 24)
 TextLabel_3.BorderColor3 = Color3.fromRGB(47, 47, 47)
@@ -751,7 +794,7 @@ end)
 
 
 AntiAfkTxt.Name = "AntiAfkTxt"
-AntiAfkTxt.Parent = game.StarterGui.ScreenGui.CheatAttivi
+AntiAfkTxt.Parent = CheatAttivi
 AntiAfkTxt.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 AntiAfkTxt.BackgroundTransparency = 0.650
 AntiAfkTxt.Size = UDim2.new(0, 256, 0, 43)
@@ -762,7 +805,7 @@ AntiAfkTxt.TextColor3 = Color3.fromRGB(4, 255, 0)
 AntiAfkTxt.TextSize = 22.000
 
 AutoFZombie.Name = "AutoFZombie"
-AutoFZombie.Parent = game.StarterGui.ScreenGui.CheatAttivi
+AutoFZombie.Parent = CheatAttivi
 AutoFZombie.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 AutoFZombie.BackgroundTransparency = 0.650
 AutoFZombie.Position = UDim2.new(0, 0, 0.316564411, 0)
@@ -774,7 +817,7 @@ AutoFZombie.TextColor3 = Color3.fromRGB(4, 255, 0)
 AutoFZombie.TextSize = 22.000
 
 AutoFPet.Name = "AutoFPet"
-AutoFPet.Parent = game.StarterGui.ScreenGui.CheatAttivi
+AutoFPet.Parent = CheatAttivi
 AutoFPet.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 AutoFPet.BackgroundTransparency = 0.650
 AutoFPet.Position = UDim2.new(0, 0, 0.263803691, 0)
@@ -786,7 +829,7 @@ AutoFPet.TextColor3 = Color3.fromRGB(4, 255, 0)
 AutoFPet.TextSize = 22.000
 
 NoClipTxt.Name = "NoClipTxt"
-NoClipTxt.Parent = game.StarterGui.ScreenGui.CheatAttivi
+NoClipTxt.Parent = CheatAttivi
 NoClipTxt.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 NoClipTxt.BackgroundTransparency = 0.650
 NoClipTxt.Position = UDim2.new(0, 0, 0.0527607426, 0)
@@ -798,7 +841,7 @@ NoClipTxt.TextColor3 = Color3.fromRGB(4, 255, 0)
 NoClipTxt.TextSize = 22.000
 
 ResetTxt.Name = "ResetTxt"
-ResetTxt.Parent = game.StarterGui.ScreenGui.CheatAttivi
+ResetTxt.Parent = CheatAttivi
 ResetTxt.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 ResetTxt.BackgroundTransparency = 0.650
 ResetTxt.Position = UDim2.new(0, 0, 0.105521485, 0)
@@ -810,7 +853,7 @@ ResetTxt.TextColor3 = Color3.fromRGB(4, 255, 0)
 ResetTxt.TextSize = 22.000
 
 SpeedTxt.Name = "SpeedTxt"
-SpeedTxt.Parent = game.StarterGui.ScreenGui.CheatAttivi
+SpeedTxt.Parent = CheatAttivi
 SpeedTxt.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 SpeedTxt.BackgroundTransparency = 0.650
 SpeedTxt.Position = UDim2.new(0, 0, 0.158282205, 0)
@@ -822,7 +865,7 @@ SpeedTxt.TextColor3 = Color3.fromRGB(4, 255, 0)
 SpeedTxt.TextSize = 22.000
 
 JumpTxt.Name = "JumpTxt"
-JumpTxt.Parent = game.StarterGui.ScreenGui.CheatAttivi
+JumpTxt.Parent = CheatAttivi
 JumpTxt.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 JumpTxt.BackgroundTransparency = 0.650
 JumpTxt.Position = UDim2.new(0, 0, 0.21104297, 0)
