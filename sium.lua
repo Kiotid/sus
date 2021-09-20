@@ -658,7 +658,7 @@ Hider.MouseButton1Down:connect(function()
 
 			local BuildPart    = Instance.new("Part",game.Workspace.__MAP) --Directory of The Part
 			BuildPart.Size     = Vector3.new(10000,1,10000)                --The Size of the Part
-			BuildPart.Position = Vector3.new(player.Position.x,player.Position.y - 15,player.Position.z)  --The Position of The Part
+			BuildPart.Position = Vector3.new(player.Position.x,player.Position.y - 20,player.Position.z)  --The Position of The Part
 			BuildPart.Anchored = true  
 		end
 	end)
