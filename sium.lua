@@ -54,6 +54,8 @@ local Rincoil = Instance.new("Frame")
 local BigPaintballTxt = Instance.new("TextLabel")
 local RincoilTxt = Instance.new("TextLabel")
 local HiderTxt = Instance.new("TextLabel")
+local CoinToPlayer = Instance.new("TextButton")
+local CoinToPlayerTxt = Instance.new("TextLabel")
 
 rconsoleprint('@@GREEN@@')
 rconsoleprint("Kio's GUI Loaded!")
@@ -658,7 +660,7 @@ Hider.MouseButton1Down:connect(function()
 
 			local BuildPart    = Instance.new("Part",game.Workspace.__MAP) --Directory of The Part
 			BuildPart.Size     = Vector3.new(10000,1,10000)                --The Size of the Part
-			BuildPart.Position = Vector3.new(player.Position.x,player.Position.y - 20,player.Position.z)  --The Position of The Part
+			BuildPart.Position = Vector3.new(player.Position.x,player.Position.y - 15,player.Position.z)  --The Position of The Part
 			BuildPart.Anchored = true  
 		end
 	end)
@@ -825,6 +827,33 @@ AutoFPet.Text = "Auto Farm (Pet Simulator X)"
 AutoFPet.TextColor3 = Color3.fromRGB(4, 255, 0)
 AutoFPet.TextSize = 22.000
 
+CoinToPlayer.Name = "CTP"
+CoinToPlayer.Parent = PetSimulator
+CoinToPlayer.BackgroundColor3 = Color3.fromRGB(24, 24, 24)
+CoinToPlayer.BorderColor3 = Color3.fromRGB(255, 255, 255)
+CoinToPlayer.BorderSizePixel = 2
+CoinToPlayer.Position = UDim2.new(0.037148118, 0, 0.415999979, 0)
+CoinToPlayer.Size = UDim2.new(0, 94, 0, 32)
+CoinToPlayer.Font = Enum.Font.SourceSans
+CoinToPlayer.Text = "Coins to player"
+CoinToPlayer.TextColor3 = Color3.fromRGB(255, 255, 255)
+CoinToPlayer.TextSize = 14.000
+CoinToPlayer.MouseButton1Down:connect(function()
+	if CoinToPlayerTxt.Visible == true then
+		CoinToPlayerTxt.Visible = false
+	else
+		CoinToPlayerTxt.Visible = true
+	end
+
+	while CoinToPlayerTxt.Visible == true do
+		for i, v in pairs(game.Workspace.__THINGS.Coins:GetChildren()) do
+			v.Coin.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.x, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.y + 10, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.z)
+		end
+		wait(3)
+	end
+end)
+
+
 NoClipTxt.Name = "NoClipTxt"
 NoClipTxt.Parent = CheatAttivi
 NoClipTxt.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -908,6 +937,18 @@ HiderTxt.Font = Enum.Font.SourceSans
 HiderTxt.Text = "PetSimX Hider (L to active)"
 HiderTxt.TextColor3 = Color3.fromRGB(4, 255, 0)
 HiderTxt.TextSize = 22.000
+
+CoinToPlayerTxt.Name = "CTPT"
+CoinToPlayerTxt.Parent = CheatAttivi
+CoinToPlayerTxt.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+CoinToPlayerTxt.BackgroundTransparency = 0.650
+CoinToPlayerTxt.Position = UDim2.new(0, 0, 0.0527607426, 0)
+CoinToPlayerTxt.Size = UDim2.new(0, 256, 0, 43)
+CoinToPlayerTxt.Visible = false
+CoinToPlayerTxt.Font = Enum.Font.SourceSans
+CoinToPlayerTxt.Text = "Coins to Player (PetSimulatorX)"
+CoinToPlayerTxt.TextColor3 = Color3.fromRGB(4, 255, 0)
+CoinToPlayerTxt.TextSize = 22.000
 
 while wait(0.1)do
 	TextLabel.TextColor3 = Color3.fromHSV(zigzag(counter),1,1)
